@@ -1,0 +1,2 @@
+class Carmeet < ApplicationRecord
+end
