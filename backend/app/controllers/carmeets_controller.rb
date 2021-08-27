@@ -23,8 +23,10 @@ class CarmeetsController < ApplicationController
     private 
 
     def set_carmeet
+        @carmeet = Carmeet.find(params[:id])
     end 
 
     def carmeet_params
+        params.require(:meet).permit(:time, :date, :location, :title, :owner)
     end 
 end
