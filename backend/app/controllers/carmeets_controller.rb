@@ -1,5 +1,5 @@
 class CarmeetsController < ApplicationController
-
+    before_action :set_carmeet, only: [:show, :update, :destroy]
     def index 
         @carmeets = Carmeet.all
 
@@ -11,6 +11,13 @@ class CarmeetsController < ApplicationController
     end 
 
     def create
+        @carmeet = Carmeet.new(carmeet_params)
+
+        if carmeet.save
+            render json: @carmeet, status: :created, :location: @carmeet
+        else
+            render json: @carmeet.errors, status: :unprocessable_entity
+        end 
     end 
 
     def update
