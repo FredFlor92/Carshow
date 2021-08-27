@@ -23,8 +23,10 @@ class RemarksController < ApplicationController
     private
 
     def set_remark
+        @remark - Remark.find(params[:id])
     end 
 
     def remark_params
+        params.require(:comment),permit(:owner, :content, :meet_id)
     end 
 end
