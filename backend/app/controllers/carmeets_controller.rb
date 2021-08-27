@@ -21,6 +21,10 @@ class CarmeetsController < ApplicationController
     end 
 
     def update
+        if @carmeet.update(carmeet_params)
+            render json: @carmeet
+        else
+            render json: @carmeet.errors, status: :unprocessable_entity
     end 
 
     def destroy
