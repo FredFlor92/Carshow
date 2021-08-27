@@ -21,6 +21,11 @@ class RemarksController < ApplicationController
     end 
 
     def update
+        if @remark.update(remark_params)
+            render json: @remark
+        else
+            render json: @remark.errors, status: :unprocessable_entity
+        end
     end 
 
     def destroy
